@@ -1,4 +1,4 @@
-# BrainComp: Modeling and Understanding Human Brain Computation at Scale
+# BCOM: Modeling and Understanding Human Brain Computation at Scale
 
 This repository hosts the static website for **Modeling and Understanding Human Brain Computation at Scale**, a **CCN 2026 satellite event** at the Zuckerman Mind Brain Behavior Institute, Columbia University, NYC.
 
