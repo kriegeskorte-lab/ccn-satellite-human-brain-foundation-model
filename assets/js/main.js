@@ -46,24 +46,64 @@
    * Navbar links active state on scroll
    */
   let navbarlinks = select('#navbar .scrollto', true)
+  let clickedNavbarlink = null
+
+  const setActiveNavbarlink = (navbarlink) => {
+    navbarlinks.forEach(link => link.classList.remove('active'))
+    if (navbarlink) navbarlink.classList.add('active')
+  }
+
   const navbarlinksActive = () => {
+    if (clickedNavbarlink) {
+      setActiveNavbarlink(clickedNavbarlink)
+      return
+    }
+
     let header = select('#header')
     let position = window.scrollY + (header ? header.offsetHeight : 0) + 20
     let atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
     let currentNavbarlink = null
 
-    navbarlinks.forEach(navbarlink => {
+    navbarlinks.forEach((navbarlink, index) => {
       if (!navbarlink.hash) return
       let section = select(navbarlink.hash)
       if (!section) return
-      if (atBottom || position >= section.offsetTop) currentNavbarlink = navbarlink
+
+      let sectionBottom = document.documentElement.scrollHeight
+      for (let nextIndex = index + 1; nextIndex < navbarlinks.length; nextIndex++) {
+        let nextNavbarlink = navbarlinks[nextIndex]
+        if (!nextNavbarlink.hash) continue
+
+        let nextSection = select(nextNavbarlink.hash)
+        if (!nextSection) continue
+
+        sectionBottom = nextSection.offsetTop
+        break
+      }
+
+      if (atBottom || (position >= section.offsetTop && position < sectionBottom)) {
+        currentNavbarlink = navbarlink
+      }
     })
 
-    navbarlinks.forEach(navbarlink => navbarlink.classList.remove('active'))
-    if (currentNavbarlink) currentNavbarlink.classList.add('active')
+    setActiveNavbarlink(currentNavbarlink)
   }
   window.addEventListener('load', navbarlinksActive)
   onscroll(document, navbarlinksActive)
+
+  const clearClickedNavbarlink = () => {
+    if (!clickedNavbarlink) return
+    clickedNavbarlink = null
+    navbarlinksActive()
+  }
+
+  window.addEventListener('wheel', clearClickedNavbarlink, { passive: true })
+  window.addEventListener('touchstart', clearClickedNavbarlink, { passive: true })
+  window.addEventListener('keydown', (event) => {
+    if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) {
+      clearClickedNavbarlink()
+    }
+  })
 
   /**
    * Scrolls to an element with header offset
@@ -140,6 +180,8 @@
   on('click', '.scrollto', function(e) {
     if (select(this.hash)) {
       e.preventDefault()
+      clickedNavbarlink = this
+      setActiveNavbarlink(clickedNavbarlink)
 
       let navbar = select('#navbar')
       if (navbar.classList.contains('navbar-mobile')) {
@@ -151,6 +193,8 @@
       scrollto(this.hash)
     }
   }, true)
+
+  on('click', '.back-to-top', clearClickedNavbarlink)
 
   /**
    * Scroll with ofset on page load with hash links in the url
