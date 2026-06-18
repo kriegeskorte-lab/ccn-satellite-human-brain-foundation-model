@@ -1216,7 +1216,8 @@ section {
   top: 85%;
   left: 50%;
   right: auto;
-  width: min(220px, calc(100% - 40px));
+  /* width: min(240px, calc(100% - 40px)); */
+  width: min(240px, 100%);
   background: #fff;
   padding: 20px 0;
   color: #2f4d5a;
@@ -1249,6 +1250,10 @@ section {
   background: #b1cbd7;
   bottom: 0;
   left: calc(50% - 25px);
+}
+
+.team .member h4 {
+  white-space: nowrap;
 }
 
 .team .member span {
@@ -1566,7 +1571,7 @@ section {
 }
 .speaker,
 .organizer {
-  width: min(190px, 100%);
+  width: min(180px, 100%);
   aspect-ratio: 1 / 1;
   margin: 0 auto;
   border-radius: 50%;
