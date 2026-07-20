@@ -698,6 +698,31 @@ section {
   line-height: 1.35;
 }
 
+.schedule-row-talk .schedule-activity-title::before,
+.schedule-row-panel .schedule-activity-title::before {
+  display: block;
+  width: fit-content;
+  margin-bottom: 10px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.schedule-row-talk .schedule-activity-title::before {
+  content: "Talk";
+  background: #3B8EC1;
+}
+
+.schedule-row-panel .schedule-activity-title::before {
+  content: "Panel";
+  background: #2f4d5a;
+}
+
 .schedule-speaker {
   display: block;
   margin-top: 5px;
