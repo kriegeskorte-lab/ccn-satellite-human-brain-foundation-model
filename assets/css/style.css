@@ -726,6 +726,10 @@ section {
   color: #fff;
 }
 
+.schedule-row-panel .schedule-activity-type {
+  background: #2f4d5a;
+}
+
 .schedule-recording {
   border: 1px solid #b1cbd7;
   background: #f0f7fa;
@@ -766,25 +770,6 @@ section {
 .schedule-activity-title:focus-visible {
   outline: 3px solid rgba(59, 142, 193, 0.3);
   outline-offset: 2px;
-}
-
-.schedule-row-panel .schedule-activity-title::before {
-  display: block;
-  width: fit-content;
-  margin-bottom: 10px;
-  padding: 3px 9px;
-  border-radius: 999px;
-  color: #fff;
-  font-size: 0.72rem;
-  font-weight: 700;
-  line-height: 1;
-  text-transform: uppercase;
-  vertical-align: middle;
-}
-
-.schedule-row-panel .schedule-activity-title::before {
-  content: "Panel";
-  background: #2f4d5a;
 }
 
 .schedule-speaker {
