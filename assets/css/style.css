@@ -698,7 +698,76 @@ section {
   line-height: 1.35;
 }
 
-.schedule-row-talk .schedule-activity-title::before,
+.schedule-activity-heading {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.schedule-activity-type,
+.schedule-recording {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.schedule-activity-type {
+  background: #3B8EC1;
+  color: #fff;
+}
+
+.schedule-recording {
+  border: 1px solid #b1cbd7;
+  background: #f0f7fa;
+  color: #2f4d5a;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.schedule-recording i {
+  font-size: 0.8rem;
+  color: #3B8EC1;
+}
+
+.schedule-recording:hover,
+.schedule-recording:focus-visible {
+  border-color: #3B8EC1;
+  background: #3B8EC1;
+  color: #fff;
+}
+
+.schedule-recording:hover i,
+.schedule-recording:focus-visible i {
+  color: #fff;
+}
+
+.schedule-activity-title {
+  text-decoration: none;
+}
+
+.schedule-activity-title:hover,
+.schedule-activity-title:focus-visible {
+  color: #3B8EC1;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.schedule-recording:focus-visible,
+.schedule-activity-title:focus-visible {
+  outline: 3px solid rgba(59, 142, 193, 0.3);
+  outline-offset: 2px;
+}
+
 .schedule-row-panel .schedule-activity-title::before {
   display: block;
   width: fit-content;
@@ -711,11 +780,6 @@ section {
   line-height: 1;
   text-transform: uppercase;
   vertical-align: middle;
-}
-
-.schedule-row-talk .schedule-activity-title::before {
-  content: "Talk";
-  background: #3B8EC1;
 }
 
 .schedule-row-panel .schedule-activity-title::before {
