@@ -758,8 +758,8 @@ section {
   text-decoration: none;
 }
 
-.schedule-activity-title:hover,
-.schedule-activity-title:focus-visible {
+a.schedule-activity-title:hover,
+a.schedule-activity-title:focus-visible {
   color: #3B8EC1;
   text-decoration: underline;
   text-decoration-thickness: 2px;
@@ -767,7 +767,7 @@ section {
 }
 
 .schedule-recording:focus-visible,
-.schedule-activity-title:focus-visible {
+a.schedule-activity-title:focus-visible {
   outline: 3px solid rgba(59, 142, 193, 0.3);
   outline-offset: 2px;
 }
